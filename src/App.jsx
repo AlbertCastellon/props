@@ -10,28 +10,26 @@ const App = () => {
     { id: 2, text: 'Llamar al médico', completed: true },
     { id: 3, text: 'Hacer ejercicio', completed: false }
   ]);
-  const [task, setTask] = useState('')
+  
 
- const newTask = (task) => {
-    if(!task) {
-      return
-  }
-   setTask(task)
 
-  }
   const addTask = (freshTask) => {
     const newTask = { id: tasks.length +1, text: freshTask, completed: false}
     const taskList = [...tasks, newTask]
     setTasks(taskList)
   }
-  
-  //useEffect(addTask(task), [task])
+
+  const deleteTask = (taskIndex) => {
+    const tasksList = [...tasks]
+    tasksList.splice(taskIndex, 1);
+    setTasks([...tasksList])
+}
   
   return (
     <>
     <h1>Lista de Tareas</h1>
       <AddTaskForm addTask={ addTask }/>
-      <Task list={tasks}/>
+      <Task list={tasks} deleteTask={deleteTask}/>
     </>
   );
 };

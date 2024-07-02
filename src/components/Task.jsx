@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Task( {list} ) {
+function Task( {list, deleteTask} ) {
     const [tasks, setTasks] = useState([...list])
 
     const isCompleted = (e) => {
@@ -17,11 +17,7 @@ function Task( {list} ) {
         list.splice(taskIndex, 1, changedTask)
         setTasks([...list])
     }
-    const deleteTask = (taskIndex) => {
-        const tasksList = [...list]
-        tasksList.splice(taskIndex, 1);
-        setTasks([...tasksList])
-    }
+    
     return (
         <>
 
